@@ -1,8 +1,12 @@
-#Currency-exchange
+# Currency-exchange
 
 How to use?
 
+run `npm i` to install node_modules
+
 run `ng serve` and open [http://localhost:4200](http://localhost:4200).
+
+credentials are: `user1` and `pass1`
 
 What's in the project?
 
@@ -20,13 +24,10 @@ What's in the project?
 
 # Notes
 
-I could have used localstorage db library for better implementation of conversion history- yet I was short in time.
+It is better to use localstorage db library for implementation of conversion history.
 
 I had a problem with Angular7 pipe from HttpClient on conversion of objects to js class Objects, so I did it manually.
 
-I didn't generate ID to each conversion on localstorage- instead i used their isoDate (I know it's ugly but it is just an example).
+I didn't generate ID to each conversion on localstorage- instead i used their isoDate (just as an example).
 
-It could be nice to change the error "couldn't find currency" to an error from validator function (more generic). - i had a problem there
-
-It could be nice to add sorting to data tables, but i had no time.
 
