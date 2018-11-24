@@ -1,0 +1,27 @@
+.exchange-history-component {
+  .header-text{
+    font-size: 16px;
+    font-weight: 500;
+    margin:10px;
+    float:left;
+  }
+  .history-tables{
+    display: flex !important;
+
+  }
+  .history-table-viewport {
+    float: left;
+    width: 40%;
+    overflow: auto ;
+    height: 392px;
+    .main-history-table{
+      width: 100%;
+    }
+  }
+  .statistic-table {
+    margin-left: 40px;
+    width: 40%;
+    float: right;
+  }
+
+}

@@ -1,0 +1,18 @@
+@import '../../../styles.scss';
+.currency-exchange-dashboard{
+
+  .app-currency-picker-component{
+    margin-left: 10px;
+  }
+  .compare-button{
+    background-color: $primary-color;
+    color: white;
+  }
+  .swap-button{
+    color: $primary-color;
+  }
+
+}
+app-currency-picker-component{
+  margin: 0px 15px 0px 5px;
+}

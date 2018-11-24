@@ -1,0 +1,43 @@
+<div class="currency-exchange-dashboard">
+  <p class="title">
+    I want to convert
+  </p>
+<div class="currency-form">
+  <form [formGroup]="groupFormControl">
+    <mat-form-field>
+      <input matInput placeholder="Amount" [formControl]="amountFormControl"
+             type="number"
+             [errorStateMatcher]="matcher"/>
+      <mat-error *ngIf="amountFormControl.hasError('required')">
+        Amount is <strong>required</strong>
+      </mat-error>
+      <mat-error *ngIf="amountFormControl.hasError('min')">
+        Amount need to be positive
+      </mat-error>
+    </mat-form-field>
+    <app-currency-picker-component [label]="'From'" [currencyList]="exchangeRates" [valueControl]="fromValueControl"></app-currency-picker-component>
+    <button mat-raised-button
+            (click)="swapCurrencies($event)"
+            ngClass="material-icons swap-button {{!toValueControl.value || !fromValueControl.value ? 'disabled-button': ''}}"
+            [disabled]="!toValueControl.value || !fromValueControl.value">
+      compare_arrows
+    </button>
+    <app-currency-picker-component [label]="'To'" [currencyList]="exchangeRates" [valueControl]="toValueControl"></app-currency-picker-component>
+    <button mat-raised-button
+            (click)="convert($event)"
+            ngClass="compare-button {{!toValueControl.value || !fromValueControl.value || amountFormControl.value <= 0 || toValueControl.value === fromValueControl.value ? 'disabled-button': ''}}"
+            [disabled]="!toValueControl.value || !fromValueControl.value || amountFormControl.value <= 0 || toValueControl.value === fromValueControl.value">
+      CONVERT
+    </button>
+    <mat-error *ngIf="toValueControl.value && toValueControl.value === fromValueControl.value">
+      Select different currencies
+    </mat-error>
+  </form>
+  </div>
+  <app-main-conversion-component [amount]="amountFormControl.value" [fromCurrency]="fromValueControl.value" [toCurrency]="toValueControl.value" [exchangeRates]="exchangeRates">
+  </app-main-conversion-component>
+  <app-exchange-history-component [currency]="fromExchangeCurrency"
+                                  [toCurrency]="toExchangeCurrency"
+                                  >
+  </app-exchange-history-component>
+</div>

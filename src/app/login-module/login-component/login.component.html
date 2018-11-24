@@ -1,0 +1,41 @@
+<div class="login-component">
+  <div class="viewport">
+<p class="title">
+  Login
+</p>
+<form class="login-form"  (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <input matInput placeholder="Username" [formControl]="userFormControl"
+           minlength="4"
+           [errorStateMatcher]="matcher"/>
+    <mat-error *ngIf="userFormControl.hasError('required')">
+      Username is <strong>required</strong>
+    </mat-error>
+    <mat-error *ngIf="userFormControl.hasError('minlength')">
+      Username minimum length is <strong>{{ minLength }}</strong>
+    </mat-error>
+  </mat-form-field>
+  <div>
+  <mat-form-field>
+  <input matInput type="password" placeholder="Password" [formControl]="passwordFormControl"
+           [errorStateMatcher]="matcher" />
+    <mat-error *ngIf="passwordFormControl.hasError('required')">
+      Password is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+  </div>
+  <button mat-raised-button class="primary-button"
+          ngClass="{{passwordFormControl.hasError('required')
+          || userFormControl.hasError('minlength')
+           || userFormControl.hasError('required')? 'disabled-button':''}}"
+          [disabled]="passwordFormControl.hasError('required')
+          || userFormControl.hasError('minlength')
+           || userFormControl.hasError('required')">
+    LOGIN</button>
+
+
+
+</form>
+</div>
+
+</div>

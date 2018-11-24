@@ -1,0 +1,15 @@
+$mainFontSize: 50px;
+.main-conversion-component{
+  padding-top: 40px;
+  padding-bottom: 40px;
+  text-align: center;
+  .main-conversion-text{
+    font-size: $mainFontSize; //the image is different than the styling picture
+    font-weight: normal;
+  }
+  .main-amount-conversion-text{
+    font-weight: bold;
+    font-size: $mainFontSize; //the image is different than the styling picture
+  }
+
+}

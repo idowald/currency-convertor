@@ -1,0 +1,12 @@
+<mat-toolbar class="header-toolbar">
+
+  <img src="assets/logo.jpg" title="currency_logo"/>
+  <app-routing-tabs-component *ngIf="authenticated"></app-routing-tabs-component>
+<span class="fill-remaining-space" *ngIf="authenticated"></span>
+    <button
+      mat-flat-button
+      *ngIf="authenticated"
+      class="logout-button color-primary"
+      (click)="logout($event)">LOGOUT</button>
+
+</mat-toolbar>

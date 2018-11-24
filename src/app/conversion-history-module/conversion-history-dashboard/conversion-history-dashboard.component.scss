@@ -1,0 +1,14 @@
+.conversion-history{
+  table{
+     width:1000px;
+    .event-col{
+      width: 40%
+    }
+    .date-col{
+      width:20%;
+    }
+    .view-button{
+      content: "view";
+    }
+  }
+}

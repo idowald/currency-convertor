@@ -1,0 +1,61 @@
+  <mat-divider></mat-divider>
+    <mat-spinner *ngIf="loader" style="left: 42%; float:left" ></mat-spinner>
+<div class="exchange-history-component" *ngIf="dataSource.length && toDataSource.length === dataSource.length ">
+  <p class="second-title">
+    Exchange History
+  </p>
+  <div>
+  <mat-form-field>
+    <mat-select placeholder="Duration" [(ngModel)]="durationValue" (selectionChange)="getCurrencyAllHistory($event)">
+      <mat-option *ngFor="let duration of durationList" [value]="duration.timestamp">
+        {{duration.text}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+    </div>
+  <div class="history-tables">
+    <!--for scrolling on large datasets-->
+    <div class="history-table-viewport  mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" class="main-history-table"
+           >
+
+      <!-- Date Column -->
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef> Date </th>
+        <td mat-cell *matCellDef="let element"> {{element.timestamp | date : 'd/M/yy' }}&nbsp;	&nbsp;	&nbsp;	 </td>
+      </ng-container>
+
+      <!-- Exchange Column -->
+      <ng-container matColumnDef="exchange">
+        <th mat-header-cell *matHeaderCellDef> Exchange rate </th>
+        <td mat-cell *matCellDef="let element"> {{(element.rate/ toDataSource[element.index].rate) | number: '0.0-7'}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns; "></tr>
+    </table>
+</div>
+    <!--statistics-->
+     <table mat-table [dataSource]="statisticsSource" class="statistic-table mat-elevation-z8"
+           >
+
+      <!-- text Column -->
+      <ng-container matColumnDef="statistic">
+        <th mat-header-cell *matHeaderCellDef> Statistics </th>
+        <td mat-cell *matCellDef="let element"> {{element.statistic }}</td>
+      </ng-container>
+
+      <!-- statistic Column -->
+      <ng-container matColumnDef="value">
+        <th mat-header-cell *matHeaderCellDef> </th>
+        <td mat-cell *matCellDef="let element">
+          {{element.statistic ==='Lowest'?(dataSource  | low:  toDataSource | number: '0.0-7' ):''}}
+        {{element.statistic ==='Highest'? (dataSource  | high:  toDataSource | number: '0.0-7' ):''}}
+        {{element.statistic ==='Average'? (dataSource  | average:  toDataSource | number: '0.0-7' ):''}}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="statisticsDisplayedColumns;"></tr>
+      <tr mat-row *matRowDef="let row; columns: statisticsDisplayedColumns;"></tr>
+    </table>
+    </div>
+</div>

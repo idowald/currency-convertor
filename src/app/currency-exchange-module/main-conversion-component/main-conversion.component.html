@@ -1,0 +1,18 @@
+<div class="main-conversion-component" *ngIf="amount && toCurrency && fromCurrency && calculateRates()!== null">
+  <div style="display: inline-flex">
+  <div class="main-conversion-text">
+    {{amount}} {{fromCurrency}}&nbsp;= &nbsp;
+  </div>
+  <div class="main-amount-conversion-text color-accent">
+    {{ amount*calculateRates() +1 | number: '1.0-0'}} {{toCurrency}}
+  </div>
+  </div>
+  <div class="currency-conversion-text">
+    <div>
+      1 {{fromCurrency}} = {{calculateRates()  | number: '0.0-6'}} {{toCurrency}}
+    </div>
+    <div>
+       1 {{toCurrency}}=  {{1/calculateRates() | number: '0.0-6'}} {{fromCurrency}}
+    </div>
+  </div>
+</div>

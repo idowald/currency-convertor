@@ -1,0 +1,59 @@
+$default-font:    Roboto;
+$default-color: #404040;
+$primary-color: #009688;
+$accent-color: #94C720;
+$warn-color: #C70D38;
+$table-header-text-color: #8D8D8D;
+$dashboard-color: #F2F2F2;
+$margin-application-left : 100px;
+.routing-tabs {
+  //I had problem to put it in routing-tabs scss for some reason
+  .mat-ink-bar {
+    background-color: $primary-color !important;
+  }
+  margin-top:10px;
+  border-bottom: 0px !important;
+}
+.dashboard{
+  margin: 0px $margin-application-left 0 $margin-application-left;
+}
+.header-toolbar{
+  padding: 0px $margin-application-left 0 $margin-application-left !important;
+  height: 50px !important;
+  border-bottom: 1px solid rgba(0,0,0,.12);
+}
+body{
+  margin:0px;
+  color: $default-color;
+  background-color: $dashboard-color;
+  font-family: $default-font;
+  font-size: 16px;
+}
+.title{
+  font-size: 48px;
+  font-weight: bold;
+}
+.second-title{
+  font-size: 24px;
+  font-weight: bold;
+}
+.primary-button{
+  background-color: $primary-color !important;;
+  color: white !important;;
+}
+.color-accent{
+  color: $accent-color !important;;
+}
+.color-warn{
+  color: $warn-color !important;
+}
+.color-primary{
+  color: $primary-color !important;
+}
+//a fix for angular material problem with opacity
+.disabled-button{
+  opacity: 0.5;
+}
+.mat-header-cell{
+  font-size: 16px !important;
+}

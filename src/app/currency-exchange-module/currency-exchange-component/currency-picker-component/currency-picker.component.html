@@ -1,0 +1,9 @@
+ <mat-form-field>
+    <input matInput placeholder="{{label}}"  [matAutocomplete]="auto" [formControl]="valueControl" required>
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let currency of filteredCurrencies" [value]="currency.currency">
+        <span>{{currency.currency}}</span>
+      </mat-option>
+    </mat-autocomplete>
+    <mat-error *ngIf="valueControl.hasError('required')">Please choose a currency</mat-error>
+ </mat-form-field>
